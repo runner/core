@@ -11,10 +11,8 @@ Task runner core
 
 ## Installation ##
 
-Can be local or global.
-
 ```bash
-npm install node-runner --global
+npm install @runner/core
 ```
 
 
@@ -23,8 +21,49 @@ npm install node-runner --global
 Add to the scope:
 
 ```js
-var runner = require('node-runner');
+var runner = require('@runner/core');
 ```
+
+Create a simple task:
+
+```js
+runner.task('make', function () {
+    // some actions
+});
+```
+
+More examples of tasks creation and execution are available
+in the [@cjssdk/runner](https://www.npmjs.com/package/@cjssdk/runner) package.
+
+Add an alias to an existing task:
+
+```js
+runner.alias('build', 'make');
+```
+
+Run task on a key or keys combination press:
+
+```js
+runner.keystroke('build', 'ctrl+b');
+```
+
+### Files watching
+
+To execute a specific task on some file changes:
+
+```js
+runner.watch('src/script/**/*.js', 'js:build');
+```
+
+Before calling `runner.watch` it's possible to configure the watch:
+
+```js
+runner.watch.config = {
+    // some configuration 
+};
+```
+
+All available configurations you can see in the underlying [chokidar](https://www.npmjs.com/package/chokidar) package.
 
 
 ## Contribution ##
