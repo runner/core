@@ -1,6 +1,6 @@
 {
     "name": "@runner/core",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Simple task runner core.",
     "author": {
         "name": "Stanislav Kalashnik",
