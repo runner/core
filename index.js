@@ -20,15 +20,12 @@ global.DEVELOP = true;
 runner.config = {};
 
 
-// report subsystem
-runner.log = log;
-
-
-runner.alias = function ( alias, id ) {
-    runner.tasks[alias] = runner.tasks[id];
+runner.alias = function ( alias, taskId ) {
+    runner.tasks[alias] = runner.tasks[taskId];
 };
 
 
+// @todo: move to @runner/plugin-watcher ???
 runner.watch = function ( glob, task ) {
     function handler ( name ) {
         log.info('changed: %s run: %s', log.colors.magenta(name), log.colors.cyan(task));
@@ -48,7 +45,7 @@ runner.watch.config = {
     }
 };
 
-
+// @todo: move to @runner/plugin-keystroke
 runner.keystrokes = {};
 
 runner.keystroke = function ( id, rule ) {
@@ -101,7 +98,7 @@ runner.addListener('error', function ( event ) {
 });
 
 // possible conflict detection
-if ( path.dirname(path.dirname(process.mainModule.filename)) !== path.dirname(__dirname) ) {
+if ( path.dirname(path.dirname(path.dirname(process.mainModule.filename))) !== path.dirname(__dirname) ) {
     log.fail('both global and local node-runner instances are used at the same time!');
 }
 
