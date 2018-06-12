@@ -52,7 +52,7 @@ runner.keystroke('build', 'ctrl+b');
 To execute a specific task on some file changes:
 
 ```js
-runner.watch('src/script/**/*.js', 'js:build');
+runner.watch('src/script/**/*.js', 'webpack:build');
 ```
 
 Before calling `runner.watch` it's possible to configure the watch:
