@@ -55,6 +55,22 @@ To execute a specific task on some file changes:
 runner.watch('src/script/**/*.js', 'webpack:build');
 ```
 
+To execute a named or anonymous function:
+
+```js
+runner.watch('src/script/**/*.js', function rebuild ( done ) {
+    // function name "rebuild" is used as task name
+    // otherwise <noname> is printed
+    done();
+});
+```
+
+To execute task series:
+
+```js
+runner.watch('src/script/**/*.js', runner.serial('lint', 'build'));
+```
+
 Before calling `runner.watch` it's possible to configure the watch:
 
 ```js

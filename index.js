@@ -27,10 +27,18 @@ runner.alias = function ( alias, taskId ) {
 
 // @todo: move to @runner/plugin-watcher ???
 runner.watch = function ( glob, task ) {
+    var taskId;
+
     function handler ( name ) {
-        log.info('changed: %s run: %s', log.colors.magenta(name), log.colors.cyan(task));
+        log.info('changed: %s run: %s', log.colors.magenta(name), log.colors.cyan(taskId));
         runner.run(task);
     }
+
+    console.assert(arguments.length === 2, 'wrong arguments number');
+    console.assert(typeof task === 'string' || typeof task === 'function', 'task should be a string or a function');
+    console.assert(!!task, 'task is empty');
+
+    taskId = typeof task === 'string' ? task : task.name || '<noname>';
 
     return chokidar.watch(glob, runner.watch.config)
         .on('change', handler)
