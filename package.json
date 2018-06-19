@@ -1,6 +1,6 @@
 {
     "name": "@runner/core",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "description": "Simple task runner core.",
     "author": {
         "name": "Stanislav Kalashnik",
@@ -18,10 +18,10 @@
         "test": "npm run lint"
     },
     "dependencies": {
-        "@cjssdk/runner": "^1.4.1",
+        "@cjssdk/runner": "^1.5.0",
         "@runner/logger": "^1.0.0",
-        "@runner/tools": "^1.0.0",
-        "chokidar": "^2.0.3"
+        "@runner/tools": "^1.1.0",
+        "chokidar": "^2.0.4"
     },
     "devDependencies": {
         "@cjssdk/eslint-config": "^1.1.2",
